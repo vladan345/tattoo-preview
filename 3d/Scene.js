@@ -1,9 +1,15 @@
-import Model from "./Model";
+"use client";
+import { useTexture } from "@react-three/drei";
 
-export default function Scene() {
+export default function Scene({ image }) {
+  const texture = useTexture(image ?? "/placeholder.jpg");
+
   return (
     <>
-      <Model />
+      <mesh>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial map={texture} />
+      </mesh>
     </>
   );
 }
